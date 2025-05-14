@@ -32,23 +32,6 @@ const Index = () => {
     // Scroll to top on initial load
     window.scrollTo(0, 0);
     
-    // Set up cookie consent banner (simplified implementation)
-    const hasConsent = localStorage.getItem("cookieConsent");
-    if (!hasConsent) {
-      const banner = document.createElement("div");
-      banner.className = "fixed bottom-0 left-0 right-0 bg-gray-800 text-white py-4 px-6 flex justify-between items-center";
-      banner.innerHTML = `
-        <p class="text-sm mr-4">We use cookies to enhance your experience. By continuing to visit this site you agree to our use of cookies.</p>
-        <button class="bg-secondary text-white px-4 py-2 rounded-md text-sm" id="accept-cookies">Accept</button>
-      `;
-      document.body.appendChild(banner);
-      
-      document.getElementById("accept-cookies")?.addEventListener("click", () => {
-        localStorage.setItem("cookieConsent", "true");
-        banner.remove();
-      });
-    }
-    
     // Exit intent popup (simplified implementation)
     const showExitIntent = (e: MouseEvent) => {
       if (e.clientY < 0 && !localStorage.getItem("exitPopupShown")) {
